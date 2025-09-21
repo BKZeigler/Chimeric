@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Attack" load_steps=3 format=3 uid="uid://d3a7a7xvscn23"]
+
+[ext_resource type="Script" uid="uid://ct0mjukewvshm" path="res://scripts/attacks/attack.gd" id="1_ewkst"]
+[ext_resource type="Texture2D" uid="uid://dom8worrwapda" path="res://assets/temp_textures/orange_slime.png" id="2_why84"]
+
+[resource]
+script = ExtResource("1_ewkst")
+name = "Strike"
+damage = 6
+cost = 1
+recharge = 2
+sprite_texture = ExtResource("2_why84")
+metadata/_custom_type_script = "uid://ct0mjukewvshm"

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b45q2dxy14xws"]
+
+[ext_resource type="Script" uid="uid://jyufup1vto86" path="res://scripts/enemy.gd" id="1_6xk8f"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_6xk8f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ClickSurface" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickSurface"]
+
+[connection signal="input_event" from="ClickSurface" to="." method="_on_click_surface_input_event"]

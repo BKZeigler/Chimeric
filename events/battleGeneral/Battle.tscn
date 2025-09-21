@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://clxp0bhu0q3tr"]
+
+[ext_resource type="Script" uid="uid://p3n0x0kxxemh" path="res://events/battleGeneral/enemy_container.gd" id="1_hxuep"]
+[ext_resource type="Script" uid="uid://tblesnshpqcn" path="res://events/battleGeneral/battle_manager.gd" id="1_mp2qg"]
+
+[node name="Battle" type="Node2D"]
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+script = ExtResource("1_hxuep")
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("1_mp2qg")
+
+[node name="EnemyTurnTimer" type="Timer" parent="BattleManager"]
+one_shot = true
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="timeout" from="BattleManager/EnemyTurnTimer" to="BattleManager" method="_on_enemy_turn_timer_timeout"]

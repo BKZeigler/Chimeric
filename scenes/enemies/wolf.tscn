@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvdv3ogfksmv"]
+
+[ext_resource type="Script" uid="uid://jyufup1vto86" path="res://scripts/enemy.gd" id="1_tjvk0"]
+[ext_resource type="Texture2D" uid="uid://3jcyoup4775f" path="res://assets/temp_textures/blue_slime.png" id="2_jhhyp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhhyp"]
+size = Vector2(145.5, 136)
+
+[node name="Wolf" type="Node2D"]
+script = ExtResource("1_tjvk0")
+max_health = 25
+sprite_texture = ExtResource("2_jhhyp")
+enemy_name = "Wolf"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, -8.00001)
+scale = Vector2(0.314453, 0.299805)
+texture = ExtResource("2_jhhyp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ClickSurface" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickSurface"]
+position = Vector2(-9, -10)
+shape = SubResource("RectangleShape2D_jhhyp")
+
+[connection signal="input_event" from="ClickSurface" to="." method="_on_click_surface_input_event"]

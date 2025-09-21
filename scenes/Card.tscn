@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://vm5di3s1fxtl"]
+
+[ext_resource type="Script" uid="uid://cbgxondgvvauv" path="res://scenes/card.gd" id="1_yiag5"]
+[ext_resource type="Texture2D" uid="uid://dom8worrwapda" path="res://assets/temp_textures/orange_slime.png" id="2_tgmmg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dx8l"]
+size = Vector2(128, 146)
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -6.0
+offset_right = -11.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yiag5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.00005, -9)
+scale = Vector2(0.311686, 0.323486)
+texture = ExtResource("2_tgmmg")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = -37.0
+offset_top = -106.0
+offset_right = 49.0
+offset_bottom = -83.0
+
+[node name="Dmg_Cost_Recharge" type="Label" parent="."]
+layout_mode = 0
+offset_left = -51.0
+offset_top = 58.0
+offset_right = 63.0
+offset_bottom = 83.0
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(30, 55)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-24, -65)
+shape = SubResource("RectangleShape2D_4dx8l")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

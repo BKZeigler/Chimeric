@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc4fs34v4ycon"]
+
+[ext_resource type="Script" uid="uid://jyufup1vto86" path="res://scripts/enemy.gd" id="1_24c4a"]
+[ext_resource type="Texture2D" uid="uid://bipkggk1onrox" path="res://assets/temp_textures/green_slime.png" id="2_7uncx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnlir"]
+size = Vector2(350, 386)
+
+[node name="Bandit" type="Node2D"]
+script = ExtResource("1_24c4a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7uncx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ClickSurface" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickSurface"]
+position = Vector2(-22, -12)
+shape = SubResource("RectangleShape2D_qnlir")

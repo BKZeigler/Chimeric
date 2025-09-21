@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cb266w80pd0im"]
+
+[node name="Battle1" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 210.0
+offset_top = 35.0
+offset_right = 845.0
+offset_bottom = 539.0
+color = Color(0.413066, 0.788718, 0.353449, 1)

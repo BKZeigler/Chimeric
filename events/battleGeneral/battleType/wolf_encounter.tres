@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BattleData" load_steps=3 format=3 uid="uid://cf6fpg8pxugtr"]
+
+[ext_resource type="Script" uid="uid://cpyhd3tyvdrlf" path="res://events/battleGeneral/battle_data.gd" id="1_cwiqk"]
+[ext_resource type="PackedScene" uid="uid://cvdv3ogfksmv" path="res://scenes/enemies/wolf.tscn" id="1_j8bh4"]
+
+[resource]
+script = ExtResource("1_cwiqk")
+enemy_scenes = Array[PackedScene]([ExtResource("1_j8bh4"), ExtResource("1_j8bh4")])
+reward_gold = 10
+reward_pool = Array[PackedScene]([])
+metadata/_custom_type_script = "uid://cpyhd3tyvdrlf"
