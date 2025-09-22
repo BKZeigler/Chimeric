@@ -10,6 +10,7 @@ signal defeated
 @export var enemy_name := "Enemy"
 
 var current_health := 0
+var statuses = []
 
 func _ready():
 	current_health = max_health
@@ -26,6 +27,19 @@ func take_damage(amount: int):
 	print("I'm at " + str(current_health)  + " health")
 	if current_health <= 0:
 		die()
+		
+func apply_status(type: String, data: Dictionary):
+	statuses.append({"type": type, "data": data, "turns_left": data.get("duration", 1)})
+
+func process_statuses():
+	for status in statuses:
+		match status.type:
+			"bleed":
+				take_damage(status.data.damage)
+			"weakness":
+				pass
+		status.turns_left -= 1
+	statuses = statuses.filter(func(s): return s.turns_left > 0)
 		
 func die():
 	print("I died!!")
@@ -46,6 +60,7 @@ func _on_enemy_clicked():
 
 func enemy_fight_pattern():
 	if BattleState.is_player_turn == false:
+		process_statuses()
 		print("Super enemy blast attack!")
 			
 			

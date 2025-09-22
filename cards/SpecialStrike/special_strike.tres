@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpecialStrike" load_steps=3 format=3 uid="uid://be451os1xiwng"]
+
+[ext_resource type="Script" uid="uid://bw5aq13beafsa" path="res://cards/SpecialStrike/SpecialStrike.gd" id="1_rqk1k"]
+[ext_resource type="Texture2D" uid="uid://bipkggk1onrox" path="res://assets/temp_textures/green_slime.png" id="2_vkkd7"]
+
+[resource]
+script = ExtResource("1_rqk1k")
+name = "Special Strike"
+damage = 6
+cost = 1
+recharge = 2
+sprite_texture = ExtResource("2_vkkd7")
+metadata/_custom_type_script = "uid://bw5aq13beafsa"

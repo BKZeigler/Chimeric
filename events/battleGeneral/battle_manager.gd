@@ -6,7 +6,8 @@ var battle_data = GlobalBattleState.battle_data
 
 var enemy_scene_paths: Array[String] = []
 var alive_enemies: Array[Node] = []
-var strike = preload("res://cards/Strike.tres")
+var strike = preload("res://cards/Strike/Strike.tres")
+var special_strike = preload("res://cards/SpecialStrike/special_strike.tres")
 var current_enemy_index = 0
 var player_hand: Array = []
 
@@ -26,7 +27,7 @@ func _ready():
 		
 		spawn_card(strike)
 		spawn_card(strike)
-		spawn_card(strike)
+		spawn_card(special_strike)
 
 func spawn_enemies_from_data():
 	enemy_container.get_children().map(func(child): child.queue_free()) #remove any enemies in seen before fight

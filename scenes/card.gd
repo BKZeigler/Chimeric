@@ -48,8 +48,9 @@ func play_card_on_target(target):
 	if is_ready():
 		if BattleState.spend_mana(attack.cost):
 			cooldown_remaining = attack.recharge
-			if target.has_method("take_damage"):
-				target.take_damage(attack.damage)
+			attack.execute(self, target)
+			#if target.has_method("take_damage"):
+				#target.take_damage(attack.damage)
 		else:
 			print("Not enough mana")
 	else:
