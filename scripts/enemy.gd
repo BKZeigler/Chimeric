@@ -29,17 +29,21 @@ func take_damage(amount: int):
 		die()
 		
 func apply_status(type: String, data: Dictionary):
+	#target.apply_status("bleed", {"damage": 1, "duration": 3}) Storing statuses here for right now.
+	#target.apply_status("weakness2", {"level": 2, "duration": 3})
 	statuses.append({"type": type, "data": data, "turns_left": data.get("duration", 1)})
+	print("Applied status: ", type, data)
 
 func process_statuses():
 	for status in statuses:
 		match status.type:
 			"bleed":
 				take_damage(status.data.damage)
-			"weakness":
+			"weakness2":
 				pass
 		status.turns_left -= 1
 	statuses = statuses.filter(func(s): return s.turns_left > 0)
+	print("Current Statuses: ", statuses)
 		
 func die():
 	print("I died!!")
@@ -62,6 +66,11 @@ func enemy_fight_pattern():
 	if BattleState.is_player_turn == false:
 		process_statuses()
 		print("Super enemy blast attack!")
+		if BattleState.player and BattleState.player.has_method("take_damage"):
+			if statuses.any(func(s): return s.type == "weakness2"):
+				BattleState.player.take_damage(1)
+			else:
+				BattleState.player.take_damage(5)
 			
 			
 		#var selected_card = BattleState.get_selected_card()
