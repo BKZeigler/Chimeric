@@ -14,6 +14,7 @@ func _ready():
 func take_damage(amount: int):
 	current_health = max(current_health - amount, 0)
 	update_health_bar()
+	print("My hp is ", current_health)
 	if current_health <= 0:
 		check_death() #check for revives/prevention of death/or death
 		

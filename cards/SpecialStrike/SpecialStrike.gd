@@ -7,4 +7,5 @@ func execute(user, target):
 	super.execute(user, target)
 	
 	if target.has_method("apply_status"):
-		target.apply_status("bleed", {"damage": 1, "duration": 3})
+		target.apply_status("weakness2", {"level": 2, "duration": 3})
+		#target.apply_status("bleed", {"damage": 1, "duration": 3})
