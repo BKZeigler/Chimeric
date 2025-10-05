@@ -31,18 +31,39 @@ func take_damage(amount: int):
 func apply_status(type: String, data: Dictionary):
 	#target.apply_status("bleed", {"damage": 1, "duration": 3}) Storing statuses here for right now.
 	#target.apply_status("weakness2", {"level": 2, "duration": 3})
-	statuses.append({"type": type, "data": data, "turns_left": data.get("duration", 1)})
-	print("Applied status: ", type, data)
+	#target.apply_status("poison",{"amount": 5, "duration": 5})
+	var found = false
+	print("statuses before applying:", statuses)
+	for status in statuses:
+		if status.has("type") and status["type"] == type:
+			found = true
+			if type == "poison":
+				status["data"]["amount"] += data.get("amount", 0)
+			status["turns_left"] += data.get("duration", 1)
+			break
+		
+	if not found:
+		statuses.append({
+			"type": type,
+			"data": data,
+			"turns_left": data.get("duration", 1)
+			})	
+		print("Applied status: ", type, data)
 
 func process_statuses():
 	for status in statuses:
-		match status.type:
+		match status["type"]:
 			"bleed":
-				take_damage(status.data.damage)
+				take_damage(status["data"]["damage"])
 			"weakness2":
 				pass
-		status.turns_left -= 1
-	statuses = statuses.filter(func(s): return s.turns_left > 0)
+			"poison":
+				take_damage(status["data"]["amount"])
+				status["data"]["amount"] -= 1
+		status["turns_left"] -= 1
+	statuses = statuses.filter(func(s): 
+		return s["turns_left"] > 0 and (s["type"] != "poison" or s["data"]["amount"] > 0)
+		)
 	print("Current Statuses: ", statuses)
 		
 func die():

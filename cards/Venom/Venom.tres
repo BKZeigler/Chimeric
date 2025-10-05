@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Venom" load_steps=3 format=3 uid="uid://bkksjhmefq368"]
+
+[ext_resource type="Script" uid="uid://c4o6y8bnwbe3o" path="res://cards/Venom/Venom.gd" id="1_fhpcm"]
+[ext_resource type="Texture2D" uid="uid://bipkggk1onrox" path="res://assets/temp_textures/green_slime.png" id="2_fw0qy"]
+
+[resource]
+script = ExtResource("1_fhpcm")
+name = "Unnamed Attack"
+damage = 0
+cost = 1
+recharge = 1
+sprite_texture = ExtResource("2_fw0qy")
+metadata/_custom_type_script = "uid://c4o6y8bnwbe3o"
