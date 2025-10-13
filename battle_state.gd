@@ -6,10 +6,12 @@ var selected_card: Card = null
 var wand_queue: Array = []
 #var player = Player  # You can assign this later
 var player: Player = null
-var max_mana := 3
-var current_mana := 3
+var max_mana := 10
+var current_mana := 10
 var player_scene := preload("res://scenes/player.tscn")
 var battle_manager: Node = null
+var current_level_scene
+var current_tile_coords: Vector2 = Vector2(-1,-1)
 
 func create_player():
 	if not player:
@@ -55,3 +57,14 @@ func execute_wand(target_enemy):
 	wand_queue.clear()
 	print("Queue Cleared!")
 	end_player_turn()
+	
+func go_to_event(battle_data):
+	var scene = get_tree().current_scene
+	current_level_scene = PackedScene.new()
+	current_level_scene.pack(scene)
+	print("Current level scene is ", current_level_scene)
+	
+func return_to_board():
+	#if current_level_scene:
+	print("trying to return")
+	get_tree().change_scene_to_packed(current_level_scene)

@@ -57,6 +57,7 @@ func _on_enemy_defeated(enemy):
 
 	if alive_enemies.is_empty():
 		print("Victory!")#end battle, show loot, etc.	
+		BattleState.return_to_board()
 		
 func position_player(player_node: Player):
 	var screen_size = get_viewport().get_visible_rect().size

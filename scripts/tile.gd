@@ -9,6 +9,7 @@ func _ready():
 
 func _on_tile_pressed(): #when tile is pressed, if it has an assigned scene, go to it
 	#if assigned_scene != null and not self.disabled:
+		BattleState.go_to_event(battle_data)
 		GlobalBattleState.battle_data = battle_data
 		get_parent().set_current_tile(self)
 		print("Trying to change scene")
