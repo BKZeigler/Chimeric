@@ -16,6 +16,12 @@ var current_tile
 func _ready():
 	print("game starting")
 	generate_board()
+	
+	if BattleState and BattleState.current_tile_coords != Vector2(-1,-1):
+		var pos = BattleState.current_tile_coords
+		current_tile = grid[pos.y][pos.x]
+		update_tile_states()
+		print("Restored tile position:", pos)
 
 func generate_board():
 	print("generating board")
@@ -44,6 +50,7 @@ func generate_board():
 		
 func set_current_tile(tile):
 	current_tile = tile
+	BattleState.current_tile_coords = get_tiles_coords(tile)
 	update_tile_states()
 	
 	
