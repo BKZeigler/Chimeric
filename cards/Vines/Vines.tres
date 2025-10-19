@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Vines" load_steps=3 format=3 uid="uid://b8n0cafkk487n"]
+
+[ext_resource type="Script" uid="uid://c2s10twjstmth" path="res://cards/Vines/vines.gd" id="1_cs8ae"]
+[ext_resource type="Texture2D" uid="uid://bipkggk1onrox" path="res://assets/temp_textures/green_slime.png" id="2_eknqf"]
+
+[resource]
+script = ExtResource("1_cs8ae")
+name = "Vines"
+damage = 2
+cost = 1
+recharge = 1
+sprite_texture = ExtResource("2_eknqf")
+metadata/_custom_type_script = "uid://c2s10twjstmth"

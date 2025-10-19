@@ -29,6 +29,7 @@ func take_damage(amount: int):
 		die()
 		
 func apply_status(type: String, data: Dictionary):
+	#target.apply_status("tangled", {"fill": null, "duration":2})
 	#target.apply_status("bleed", {"damage": 1, "duration": 3}) Storing statuses here for right now.
 	#target.apply_status("weakness2", {"level": 2, "duration": 3})
 	#target.apply_status("poison",{"amount": 5, "duration": 5})
@@ -86,12 +87,15 @@ func _on_enemy_clicked():
 func enemy_fight_pattern():
 	if BattleState.is_player_turn == false:
 		process_statuses()
-		print("Super enemy blast attack!")
-		if BattleState.player and BattleState.player.has_method("take_damage"):
-			if statuses.any(func(s): return s.type == "weakness2"):
-				BattleState.player.take_damage(1)
-			else:
-				BattleState.player.take_damage(5)
+		if statuses.any(func(s): return s.type == "tangled"):
+			return
+		else:
+			print("Super enemy blast attack!")
+			if BattleState.player and BattleState.player.has_method("take_damage"):
+				if statuses.any(func(s): return s.type == "weakness2"):
+					BattleState.player.take_damage(1)
+				else:
+					BattleState.player.take_damage(5)
 			
 			
 		#var selected_card = BattleState.get_selected_card()
