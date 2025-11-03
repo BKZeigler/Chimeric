@@ -23,7 +23,18 @@ func _ready():
 		
 func take_damage(amount: int):
 	print("I'm taking dmg!")
-	current_health -= amount
+	var marked_idx = statuses.find(func(s): return s["type"] == "marked")
+	for i in range(statuses.size()):
+		if statuses[i]["type"] == "marked":
+			marked_idx = i
+			break
+	print("Marked index:", marked_idx)
+	if marked_idx != -1:
+		var marked_status = statuses[marked_idx]
+		current_health -= (amount * 2)
+		marked_status["turns_left"] -= 1
+	else:
+		current_health -= amount
 	print("I'm at " + str(current_health)  + " health")
 	if current_health <= 0:
 		die()
@@ -33,6 +44,7 @@ func apply_status(type: String, data: Dictionary):
 	#target.apply_status("bleed", {"damage": 1, "duration": 3}) Storing statuses here for right now.
 	#target.apply_status("weakness2", {"level": 2, "duration": 3})
 	#target.apply_status("poison",{"amount": 5, "duration": 5})
+	#target.apply_status("marked",{"level": 1, "duration": 1})
 	var found = false
 	print("statuses before applying:", statuses)
 	for status in statuses:
@@ -61,6 +73,8 @@ func process_statuses():
 			"poison":
 				take_damage(status["data"]["amount"])
 				status["data"]["amount"] -= 1
+			"marked":
+				status["turns_left"] += 1
 		status["turns_left"] -= 1
 	statuses = statuses.filter(func(s): 
 		return s["turns_left"] > 0 and (s["type"] != "poison" or s["data"]["amount"] > 0)

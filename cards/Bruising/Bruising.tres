@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Bruising" load_steps=2 format=3 uid="uid://sqtei5x375x5"]
+
+[ext_resource type="Script" uid="uid://mobic8bhfn7f" path="res://cards/Bruising/Bruising.gd" id="1_xcnvk"]
+
+[resource]
+script = ExtResource("1_xcnvk")
+name = "Unnamed Attack"
+damage = 2
+cost = 1
+recharge = 1
+metadata/_custom_type_script = "uid://mobic8bhfn7f"
